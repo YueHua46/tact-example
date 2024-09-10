@@ -1,0 +1,85 @@
+#pragma version =0.4.4;
+#pragma allow-post-modification;
+#pragma compute-asm-ltr;
+
+#include "sample_HelloWorld.headers.fc";
+#include "sample_HelloWorld.stdlib.fc";
+#include "sample_HelloWorld.constants.fc";
+#include "sample_HelloWorld.storage.fc";
+
+;;
+;; Contract HelloWorld functions
+;;
+
+(slice, int) $HelloWorld$_contract_init(slice $owner) impure inline_ref {
+    var (($self'owner, $self'counter)) = (null(), null());
+    $self'owner = $owner;
+    $self'counter = 0;
+    return ($self'owner, $self'counter);
+}
+
+((slice, int), slice) $HelloWorld$_fun_greeting((slice, int) $self) impure inline_ref {
+    var (($self'owner, $self'counter)) = $self;
+    return (($self'owner, $self'counter), __gen_slice_string_2b2906ac6fa5d55f975ab66b694b8b37589f389c4c8bade339a24dedfcccac62());
+}
+
+;;
+;; Receivers of a Contract HelloWorld
+;;
+
+;;
+;; Get methods of a Contract HelloWorld
+;;
+
+_ %greeting() method_id(78250) {
+    var self = $HelloWorld$_contract_load();
+    var res = self~$HelloWorld$_fun_greeting();
+    return res;
+}
+
+_ lazy_deployment_completed() method_id {
+    return get_data().begin_parse().load_int(1);
+}
+
+;;
+;; Routing of a Contract HelloWorld
+;;
+
+((slice, int), int) $HelloWorld$_contract_router_internal((slice, int) self, int msg_bounced, slice in_msg) impure inline_ref {
+    ;; Handle bounced messages
+    if (msg_bounced) {
+        return (self, true);
+    }
+    
+    ;; Parse incoming message
+    int op = 0;
+    if (slice_bits(in_msg) >= 32) {
+        op = in_msg.preload_uint(32);
+    }
+    
+    
+    return (self, false);
+}
+
+() recv_internal(int msg_value, cell in_msg_cell, slice in_msg) impure {
+    
+    ;; Context
+    var cs = in_msg_cell.begin_parse();
+    var msg_flags = cs~load_uint(4);
+    var msg_bounced = -(msg_flags & 1);
+    slice msg_sender_addr = __tact_verify_address(cs~load_msg_addr());
+    __tact_context = (msg_bounced, msg_sender_addr, msg_value, cs);
+    __tact_context_sender = msg_sender_addr;
+    
+    ;; Load contract data
+    var self = $HelloWorld$_contract_load();
+    
+    ;; Handle operation
+    int handled = self~$HelloWorld$_contract_router_internal(msg_bounced, in_msg);
+    
+    ;; Throw if not handled
+    throw_unless(130, handled);
+    
+    ;; Persist state
+    $HelloWorld$_contract_store(self);
+}

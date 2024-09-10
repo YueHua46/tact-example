@@ -80,7 +80,7 @@ forall X0, X1 -> (X0, X1) __tact_tuple_destroy_2(tuple v) asm "2 UNTUPLE";
     send_raw_message($c, $params'mode);
 }
 
-((int), ()) $SampleTactContract$_fun_forward((int) $self, slice $to, cell $body, int $bounce, tuple $init) impure inline_ref {
+((int), ()) $SimpleCounterContract$_fun_forward((int) $self, slice $to, cell $body, int $bounce, tuple $init) impure inline_ref {
     var (($self'val)) = $self;
     var ($init) = $init;
     cell $code = null();
@@ -104,8 +104,8 @@ forall X0, X1 -> (X0, X1) __tact_tuple_destroy_2(tuple v) asm "2 UNTUPLE";
     return (($self'val), ());
 }
 
-((int), ()) $SampleTactContract$_fun_notify((int) $self, cell $body) impure inline {
+((int), ()) $SimpleCounterContract$_fun_notify((int) $self, cell $body) impure inline {
     var (($self'val)) = $self;
-    ($self'val)~$SampleTactContract$_fun_forward(__tact_context_get_sender(), $body, false, null());
+    ($self'val)~$SimpleCounterContract$_fun_forward(__tact_context_get_sender(), $body, false, null());
     return (($self'val), ());
 }

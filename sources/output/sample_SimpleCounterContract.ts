@@ -362,73 +362,73 @@ function dictValueParserFactoryDeploy(): DictionaryValue<FactoryDeploy> {
     }
 }
 
-export type SampleTactContract$Data = {
-    $$type: 'SampleTactContract$Data';
+export type SimpleCounterContract$Data = {
+    $$type: 'SimpleCounterContract$Data';
     val: bigint;
 }
 
-export function storeSampleTactContract$Data(src: SampleTactContract$Data) {
+export function storeSimpleCounterContract$Data(src: SimpleCounterContract$Data) {
     return (builder: Builder) => {
         let b_0 = builder;
         b_0.storeUint(src.val, 32);
     };
 }
 
-export function loadSampleTactContract$Data(slice: Slice) {
+export function loadSimpleCounterContract$Data(slice: Slice) {
     let sc_0 = slice;
     let _val = sc_0.loadUintBig(32);
-    return { $$type: 'SampleTactContract$Data' as const, val: _val };
+    return { $$type: 'SimpleCounterContract$Data' as const, val: _val };
 }
 
-function loadTupleSampleTactContract$Data(source: TupleReader) {
+function loadTupleSimpleCounterContract$Data(source: TupleReader) {
     let _val = source.readBigNumber();
-    return { $$type: 'SampleTactContract$Data' as const, val: _val };
+    return { $$type: 'SimpleCounterContract$Data' as const, val: _val };
 }
 
-function loadGetterTupleSampleTactContract$Data(source: TupleReader) {
+function loadGetterTupleSimpleCounterContract$Data(source: TupleReader) {
     let _val = source.readBigNumber();
-    return { $$type: 'SampleTactContract$Data' as const, val: _val };
+    return { $$type: 'SimpleCounterContract$Data' as const, val: _val };
 }
 
-function storeTupleSampleTactContract$Data(source: SampleTactContract$Data) {
+function storeTupleSimpleCounterContract$Data(source: SimpleCounterContract$Data) {
     let builder = new TupleBuilder();
     builder.writeNumber(source.val);
     return builder.build();
 }
 
-function dictValueParserSampleTactContract$Data(): DictionaryValue<SampleTactContract$Data> {
+function dictValueParserSimpleCounterContract$Data(): DictionaryValue<SimpleCounterContract$Data> {
     return {
         serialize: (src, builder) => {
-            builder.storeRef(beginCell().store(storeSampleTactContract$Data(src)).endCell());
+            builder.storeRef(beginCell().store(storeSimpleCounterContract$Data(src)).endCell());
         },
         parse: (src) => {
-            return loadSampleTactContract$Data(src.loadRef().beginParse());
+            return loadSimpleCounterContract$Data(src.loadRef().beginParse());
         }
     }
 }
 
- type SampleTactContract_init_args = {
-    $$type: 'SampleTactContract_init_args';
+ type SimpleCounterContract_init_args = {
+    $$type: 'SimpleCounterContract_init_args';
 }
 
-function initSampleTactContract_init_args(src: SampleTactContract_init_args) {
+function initSimpleCounterContract_init_args(src: SimpleCounterContract_init_args) {
     return (builder: Builder) => {
         let b_0 = builder;
     };
 }
 
-async function SampleTactContract_init() {
+async function SimpleCounterContract_init() {
     const __code = Cell.fromBase64('te6ccgECDQEAAfoAART/APSkE/S88sgLAQIBYgIDApjQAdDTAwFxsKMB+kABINdJgQELuvLgiCDXCwoggQT/uvLQiYMJuvLgiFRQUwNvBPhhAvhi2zxZ2zzy4ILI+EMBzH8BygABAcsfye1UCgQCAnYICQL27aLt+wGSMH/gcCHXScIflTAg1wsf3iCCEJRqmLa6jqgw0x8BghCUapi2uvLggdM/ATHIAYIQr/kPV1jLH8s/yfhCAXBt2zx/4MAAjiv5AYLwxPjXIxLt/e9be+x4M727Fi0VEb14qRKu0PJjevZVcq66lKR/2zHgkTDiBQwBOm1tIm6zmVsgbvLQgG8iAZEy4hAkcAMEgEJQI9s8BgHKyHEBygFQBwHKAHABygJQBSDXSYEBC7ry4Igg1wsKIIEE/7ry0ImDCbry4IjPFlAD+gJwAcpoI26zkX+TJG6z4pczMwFwAcoA4w0hbrOcfwHKAAEgbvLQgAHMlTFwAcoA4skB+wAHAJh/AcoAyHABygBwAcoAJG6znX8BygAEIG7y0IBQBMyWNANwAcoA4iRus51/AcoABCBu8tCAUATMljQDcAHKAOJwAcoAAn8BygACyVjMABGwr7tRNDSAAGACD7KwNs82zwxgCgsBPO1E0NQB+GPSAAGU0x8BMeAw+CjXCwqDCbry4InbPAwAAiAAAnA=');
-    const __system = Cell.fromBase64('te6cckECDwEAAgQAAQHAAQEFoebTAgEU/wD0pBP0vPLICwMCAWIECQKY0AHQ0wMBcbCjAfpAASDXSYEBC7ry4Igg1wsKIIEE/7ry0ImDCbry4IhUUFMDbwT4YQL4Yts8Wds88uCCyPhDAcx/AcoAAQHLH8ntVAwFAvbtou37AZIwf+BwIddJwh+VMCDXCx/eIIIQlGqYtrqOqDDTHwGCEJRqmLa68uCB0z8BMcgBghCv+Q9XWMsfyz/J+EIBcG3bPH/gwACOK/kBgvDE+NcjEu3971t77HgzvbsWLRURvXipEq7Q8mN69lVyrrqUpH/bMeCRMOIGDQE6bW0ibrOZWyBu8tCAbyIBkTLiECRwAwSAQlAj2zwHAcrIcQHKAVAHAcoAcAHKAlAFINdJgQELuvLgiCDXCwoggQT/uvLQiYMJuvLgiM8WUAP6AnABymgjbrORf5MkbrPilzMzAXABygDjDSFus5x/AcoAASBu8tCAAcyVMXABygDiyQH7AAgAmH8BygDIcAHKAHABygAkbrOdfwHKAAQgbvLQgFAEzJY0A3ABygDiJG6znX8BygAEIG7y0IBQBMyWNANwAcoA4nABygACfwHKAALJWMwCAnYKCwARsK+7UTQ0gABgAg+ysDbPNs8MYAwOATztRNDUAfhj0gABlNMfATHgMPgo1wsKgwm68uCJ2zwNAAJwAAIgpaECXA==');
+    const __system = Cell.fromBase64('te6cckECDwEAAgQAAQHAAQEFoM0hAgEU/wD0pBP0vPLICwMCAWIECQKY0AHQ0wMBcbCjAfpAASDXSYEBC7ry4Igg1wsKIIEE/7ry0ImDCbry4IhUUFMDbwT4YQL4Yts8Wds88uCCyPhDAcx/AcoAAQHLH8ntVAwFAvbtou37AZIwf+BwIddJwh+VMCDXCx/eIIIQlGqYtrqOqDDTHwGCEJRqmLa68uCB0z8BMcgBghCv+Q9XWMsfyz/J+EIBcG3bPH/gwACOK/kBgvDE+NcjEu3971t77HgzvbsWLRURvXipEq7Q8mN69lVyrrqUpH/bMeCRMOIGDQE6bW0ibrOZWyBu8tCAbyIBkTLiECRwAwSAQlAj2zwHAcrIcQHKAVAHAcoAcAHKAlAFINdJgQELuvLgiCDXCwoggQT/uvLQiYMJuvLgiM8WUAP6AnABymgjbrORf5MkbrPilzMzAXABygDjDSFus5x/AcoAASBu8tCAAcyVMXABygDiyQH7AAgAmH8BygDIcAHKAHABygAkbrOdfwHKAAQgbvLQgFAEzJY0A3ABygDiJG6znX8BygAEIG7y0IBQBMyWNANwAcoA4nABygACfwHKAALJWMwCAnYKCwARsK+7UTQ0gABgAg+ysDbPNs8MYAwOATztRNDUAfhj0gABlNMfATHgMPgo1wsKgwm68uCJ2zwNAAJwAAIgHaldzQ==');
     let builder = beginCell();
     builder.storeRef(__system);
     builder.storeUint(0, 1);
-    initSampleTactContract_init_args({ $$type: 'SampleTactContract_init_args' })(builder);
+    initSimpleCounterContract_init_args({ $$type: 'SimpleCounterContract_init_args' })(builder);
     const __data = builder.endCell();
     return { code: __code, data: __data };
 }
 
-const SampleTactContract_errors: { [key: number]: { message: string } } = {
+const SimpleCounterContract_errors: { [key: number]: { message: string } } = {
     2: { message: `Stack underflow` },
     3: { message: `Stack overflow` },
     4: { message: `Integer overflow` },
@@ -455,52 +455,52 @@ const SampleTactContract_errors: { [key: number]: { message: string } } = {
     137: { message: `Masterchain support is not enabled for this contract` },
 }
 
-const SampleTactContract_types: ABIType[] = [
+const SimpleCounterContract_types: ABIType[] = [
     {"name":"StateInit","header":null,"fields":[{"name":"code","type":{"kind":"simple","type":"cell","optional":false}},{"name":"data","type":{"kind":"simple","type":"cell","optional":false}}]},
     {"name":"Context","header":null,"fields":[{"name":"bounced","type":{"kind":"simple","type":"bool","optional":false}},{"name":"sender","type":{"kind":"simple","type":"address","optional":false}},{"name":"value","type":{"kind":"simple","type":"int","optional":false,"format":257}},{"name":"raw","type":{"kind":"simple","type":"slice","optional":false}}]},
     {"name":"SendParameters","header":null,"fields":[{"name":"bounce","type":{"kind":"simple","type":"bool","optional":false}},{"name":"to","type":{"kind":"simple","type":"address","optional":false}},{"name":"value","type":{"kind":"simple","type":"int","optional":false,"format":257}},{"name":"mode","type":{"kind":"simple","type":"int","optional":false,"format":257}},{"name":"body","type":{"kind":"simple","type":"cell","optional":true}},{"name":"code","type":{"kind":"simple","type":"cell","optional":true}},{"name":"data","type":{"kind":"simple","type":"cell","optional":true}}]},
     {"name":"Deploy","header":2490013878,"fields":[{"name":"queryId","type":{"kind":"simple","type":"uint","optional":false,"format":64}}]},
     {"name":"DeployOk","header":2952335191,"fields":[{"name":"queryId","type":{"kind":"simple","type":"uint","optional":false,"format":64}}]},
     {"name":"FactoryDeploy","header":1829761339,"fields":[{"name":"queryId","type":{"kind":"simple","type":"uint","optional":false,"format":64}},{"name":"cashback","type":{"kind":"simple","type":"address","optional":false}}]},
-    {"name":"SampleTactContract$Data","header":null,"fields":[{"name":"val","type":{"kind":"simple","type":"uint","optional":false,"format":32}}]},
+    {"name":"SimpleCounterContract$Data","header":null,"fields":[{"name":"val","type":{"kind":"simple","type":"uint","optional":false,"format":32}}]},
 ]
 
-const SampleTactContract_getters: ABIGetter[] = [
+const SimpleCounterContract_getters: ABIGetter[] = [
     {"name":"value","arguments":[],"returnType":{"kind":"simple","type":"int","optional":false,"format":257}},
 ]
 
-export const SampleTactContract_getterMapping: { [key: string]: string } = {
+export const SimpleCounterContract_getterMapping: { [key: string]: string } = {
     'value': 'getValue',
 }
 
-const SampleTactContract_receivers: ABIReceiver[] = [
+const SimpleCounterContract_receivers: ABIReceiver[] = [
     {"receiver":"internal","message":{"kind":"text","text":"increment"}},
     {"receiver":"internal","message":{"kind":"typed","type":"Deploy"}},
 ]
 
-export class SampleTactContract implements Contract {
+export class SimpleCounterContract implements Contract {
     
     static async init() {
-        return await SampleTactContract_init();
+        return await SimpleCounterContract_init();
     }
     
     static async fromInit() {
-        const init = await SampleTactContract_init();
+        const init = await SimpleCounterContract_init();
         const address = contractAddress(0, init);
-        return new SampleTactContract(address, init);
+        return new SimpleCounterContract(address, init);
     }
     
     static fromAddress(address: Address) {
-        return new SampleTactContract(address);
+        return new SimpleCounterContract(address);
     }
     
     readonly address: Address; 
     readonly init?: { code: Cell, data: Cell };
     readonly abi: ContractABI = {
-        types:  SampleTactContract_types,
-        getters: SampleTactContract_getters,
-        receivers: SampleTactContract_receivers,
-        errors: SampleTactContract_errors,
+        types:  SimpleCounterContract_types,
+        getters: SimpleCounterContract_getters,
+        receivers: SimpleCounterContract_receivers,
+        errors: SimpleCounterContract_errors,
     };
     
     private constructor(address: Address, init?: { code: Cell, data: Cell }) {

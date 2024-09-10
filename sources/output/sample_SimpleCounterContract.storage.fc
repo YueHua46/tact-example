@@ -52,37 +52,37 @@ cell $DeployOk$_store_cell((int) v) inline {
 }
 
 ;;
-;; Type: SampleTactContract
+;; Type: SimpleCounterContract
 ;;
 
-builder $SampleTactContract$_store(builder build_0, (int) v) inline {
+builder $SimpleCounterContract$_store(builder build_0, (int) v) inline {
     var (v'val) = v;
     build_0 = build_0.store_uint(v'val, 32);
     return build_0;
 }
 
-(slice, ((int))) $SampleTactContract$_load(slice sc_0) inline {
+(slice, ((int))) $SimpleCounterContract$_load(slice sc_0) inline {
     var v'val = sc_0~load_uint(32);
     return (sc_0, (v'val));
 }
 
-(int) $SampleTactContract$_contract_load() impure inline_ref {
+(int) $SimpleCounterContract$_contract_load() impure inline_ref {
     slice $sc = get_data().begin_parse();
     __tact_context_sys = $sc~load_ref();
     int $loaded = $sc~load_int(1);
     if ($loaded) {
-        return $sc~$SampleTactContract$_load();
+        return $sc~$SimpleCounterContract$_load();
     } else {
         ;; Allow only workchain deployments
         throw_unless(137, my_address().preload_uint(11) == 1024);
-        return $SampleTactContract$_contract_init();
+        return $SimpleCounterContract$_contract_init();
     }
 }
 
-() $SampleTactContract$_contract_store((int) v) impure inline {
+() $SimpleCounterContract$_contract_store((int) v) impure inline {
     builder b = begin_cell();
     b = b.store_ref(__tact_context_sys);
     b = b.store_int(true, 1);
-    b = $SampleTactContract$_store(b, v);
+    b = $SimpleCounterContract$_store(b, v);
     set_data(b.end_cell());
 }

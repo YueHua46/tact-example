@@ -1,0 +1,34 @@
+;;
+;; Header files for HelloWorld
+;; NOTE: declarations are sorted for optimal order
+;;
+
+;; __tact_verify_address
+slice __tact_verify_address(slice address) impure inline;
+
+;; __tact_load_address
+(slice, slice) __tact_load_address(slice cs) inline;
+
+;; __tact_store_address
+builder __tact_store_address(builder b, slice address) inline;
+
+;; $HelloWorld$_store
+builder $HelloWorld$_store(builder build_0, (slice, int) v) inline;
+
+;; $HelloWorld$_load
+(slice, ((slice, int))) $HelloWorld$_load(slice sc_0) inline;
+
+;; $HelloWorld$init$_load
+(slice, ((slice))) $HelloWorld$init$_load(slice sc_0) inline;
+
+;; $HelloWorld$_contract_init
+(slice, int) $HelloWorld$_contract_init(slice $owner) impure inline_ref;
+
+;; $HelloWorld$_contract_load
+(slice, int) $HelloWorld$_contract_load() impure inline_ref;
+
+;; $HelloWorld$_contract_store
+() $HelloWorld$_contract_store((slice, int) v) impure inline;
+
+;; $HelloWorld$_fun_greeting
+((slice, int), slice) $HelloWorld$_fun_greeting((slice, int) $self) impure inline_ref;

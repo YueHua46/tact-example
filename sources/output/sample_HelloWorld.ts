@@ -362,73 +362,81 @@ function dictValueParserFactoryDeploy(): DictionaryValue<FactoryDeploy> {
     }
 }
 
-export type SampleTactContract$Data = {
-    $$type: 'SampleTactContract$Data';
-    val: bigint;
+export type HelloWorld$Data = {
+    $$type: 'HelloWorld$Data';
+    owner: Address;
+    counter: bigint;
 }
 
-export function storeSampleTactContract$Data(src: SampleTactContract$Data) {
+export function storeHelloWorld$Data(src: HelloWorld$Data) {
     return (builder: Builder) => {
         let b_0 = builder;
-        b_0.storeUint(src.val, 32);
+        b_0.storeAddress(src.owner);
+        b_0.storeUint(src.counter, 256);
     };
 }
 
-export function loadSampleTactContract$Data(slice: Slice) {
+export function loadHelloWorld$Data(slice: Slice) {
     let sc_0 = slice;
-    let _val = sc_0.loadUintBig(32);
-    return { $$type: 'SampleTactContract$Data' as const, val: _val };
+    let _owner = sc_0.loadAddress();
+    let _counter = sc_0.loadUintBig(256);
+    return { $$type: 'HelloWorld$Data' as const, owner: _owner, counter: _counter };
 }
 
-function loadTupleSampleTactContract$Data(source: TupleReader) {
-    let _val = source.readBigNumber();
-    return { $$type: 'SampleTactContract$Data' as const, val: _val };
+function loadTupleHelloWorld$Data(source: TupleReader) {
+    let _owner = source.readAddress();
+    let _counter = source.readBigNumber();
+    return { $$type: 'HelloWorld$Data' as const, owner: _owner, counter: _counter };
 }
 
-function loadGetterTupleSampleTactContract$Data(source: TupleReader) {
-    let _val = source.readBigNumber();
-    return { $$type: 'SampleTactContract$Data' as const, val: _val };
+function loadGetterTupleHelloWorld$Data(source: TupleReader) {
+    let _owner = source.readAddress();
+    let _counter = source.readBigNumber();
+    return { $$type: 'HelloWorld$Data' as const, owner: _owner, counter: _counter };
 }
 
-function storeTupleSampleTactContract$Data(source: SampleTactContract$Data) {
+function storeTupleHelloWorld$Data(source: HelloWorld$Data) {
     let builder = new TupleBuilder();
-    builder.writeNumber(source.val);
+    builder.writeAddress(source.owner);
+    builder.writeNumber(source.counter);
     return builder.build();
 }
 
-function dictValueParserSampleTactContract$Data(): DictionaryValue<SampleTactContract$Data> {
+function dictValueParserHelloWorld$Data(): DictionaryValue<HelloWorld$Data> {
     return {
         serialize: (src, builder) => {
-            builder.storeRef(beginCell().store(storeSampleTactContract$Data(src)).endCell());
+            builder.storeRef(beginCell().store(storeHelloWorld$Data(src)).endCell());
         },
         parse: (src) => {
-            return loadSampleTactContract$Data(src.loadRef().beginParse());
+            return loadHelloWorld$Data(src.loadRef().beginParse());
         }
     }
 }
 
- type SampleTactContract_init_args = {
-    $$type: 'SampleTactContract_init_args';
+ type HelloWorld_init_args = {
+    $$type: 'HelloWorld_init_args';
+    owner: Address;
 }
 
-function initSampleTactContract_init_args(src: SampleTactContract_init_args) {
+function initHelloWorld_init_args(src: HelloWorld_init_args) {
     return (builder: Builder) => {
         let b_0 = builder;
+        b_0.storeAddress(src.owner);
     };
 }
 
-async function SampleTactContract_init() {
-    const __code = Cell.fromBase64('te6ccgECDQEAAfoAART/APSkE/S88sgLAQIBYgIDApjQAdDTAwFxsKMB+kABINdJgQELuvLgiCDXCwoggQT/uvLQiYMJuvLgiFRQUwNvBPhhAvhi2zxZ2zzy4ILI+EMBzH8BygABAcsfye1UCgQCAnYICQL27aLt+wGSMH/gcCHXScIflTAg1wsf3iCCEJRqmLa6jqgw0x8BghCUapi2uvLggdM/ATHIAYIQr/kPV1jLH8s/yfhCAXBt2zx/4MAAjiv5AYLwxPjXIxLt/e9be+x4M727Fi0VEb14qRKu0PJjevZVcq66lKR/2zHgkTDiBQwBOm1tIm6zmVsgbvLQgG8iAZEy4hAkcAMEgEJQI9s8BgHKyHEBygFQBwHKAHABygJQBSDXSYEBC7ry4Igg1wsKIIEE/7ry0ImDCbry4IjPFlAD+gJwAcpoI26zkX+TJG6z4pczMwFwAcoA4w0hbrOcfwHKAAEgbvLQgAHMlTFwAcoA4skB+wAHAJh/AcoAyHABygBwAcoAJG6znX8BygAEIG7y0IBQBMyWNANwAcoA4iRus51/AcoABCBu8tCAUATMljQDcAHKAOJwAcoAAn8BygACyVjMABGwr7tRNDSAAGACD7KwNs82zwxgCgsBPO1E0NQB+GPSAAGU0x8BMeAw+CjXCwqDCbry4InbPAwAAiAAAnA=');
-    const __system = Cell.fromBase64('te6cckECDwEAAgQAAQHAAQEFoebTAgEU/wD0pBP0vPLICwMCAWIECQKY0AHQ0wMBcbCjAfpAASDXSYEBC7ry4Igg1wsKIIEE/7ry0ImDCbry4IhUUFMDbwT4YQL4Yts8Wds88uCCyPhDAcx/AcoAAQHLH8ntVAwFAvbtou37AZIwf+BwIddJwh+VMCDXCx/eIIIQlGqYtrqOqDDTHwGCEJRqmLa68uCB0z8BMcgBghCv+Q9XWMsfyz/J+EIBcG3bPH/gwACOK/kBgvDE+NcjEu3971t77HgzvbsWLRURvXipEq7Q8mN69lVyrrqUpH/bMeCRMOIGDQE6bW0ibrOZWyBu8tCAbyIBkTLiECRwAwSAQlAj2zwHAcrIcQHKAVAHAcoAcAHKAlAFINdJgQELuvLgiCDXCwoggQT/uvLQiYMJuvLgiM8WUAP6AnABymgjbrORf5MkbrPilzMzAXABygDjDSFus5x/AcoAASBu8tCAAcyVMXABygDiyQH7AAgAmH8BygDIcAHKAHABygAkbrOdfwHKAAQgbvLQgFAEzJY0A3ABygDiJG6znX8BygAEIG7y0IBQBMyWNANwAcoA4nABygACfwHKAALJWMwCAnYKCwARsK+7UTQ0gABgAg+ysDbPNs8MYAwOATztRNDUAfhj0gABlNMfATHgMPgo1wsKgwm68uCJ2zwNAAJwAAIgpaECXA==');
+async function HelloWorld_init(owner: Address) {
+    const __code = Cell.fromBase64('te6ccgECCgEAASMAART/APSkE/S88sgLAQIBYgIDAtTQAdDTAwFxsKMB+kABINdJgQELuvLgiCDXCwoggQT/uvLQiYMJuvLgiFRQUwNvBPhhAvhi2zxa2zzy4ILI+EMBzH8BygBZWSDXSYEBC7ry4Igg1wsKIIEE/7ry0ImDCbry4IjPFsv/ye1UBwQCASAFBgAaAZIwf+Ag10kxwh8wcAIRvY1W2ebZ42EMBwgAEb4V92omhpAADAHA7UTQ1AH4Y9IAAY4l+kABINdJgQELuvLgiCDXCwoggQT/uvLQiYMJuvLgiAHT/1lsEuD4KNcLCoMJuvLgifpAASDXSYEBC7ry4Igg1wsKIIEE/7ry0ImDCbry4IgB0ds8CQAei9SGVsbG8sIFdvcmxkIYAAJw');
+    const __system = Cell.fromBase64('te6cckECDAEAAS0AAQHAAQEFoPYVAgEU/wD0pBP0vPLICwMCAWIEBgLU0AHQ0wMBcbCjAfpAASDXSYEBC7ry4Igg1wsKIIEE/7ry0ImDCbry4IhUUFMDbwT4YQL4Yts8Wts88uCCyPhDAcx/AcoAWVkg10mBAQu68uCIINcLCiCBBP+68tCJgwm68uCIzxbL/8ntVAgFABoBkjB/4CDXSTHCHzBwAgEgBwsCEb2NVtnm2eNhDAgKAcDtRNDUAfhj0gABjiX6QAEg10mBAQu68uCIINcLCiCBBP+68tCJgwm68uCIAdP/WWwS4Pgo1wsKgwm68uCJ+kABINdJgQELuvLgiCDXCwoggQT/uvLQiYMJuvLgiAHR2zwJAAJwAB6L1IZWxsbywgV29ybGQhgAEb4V92omhpAADMW9nrA=');
     let builder = beginCell();
     builder.storeRef(__system);
     builder.storeUint(0, 1);
-    initSampleTactContract_init_args({ $$type: 'SampleTactContract_init_args' })(builder);
+    initHelloWorld_init_args({ $$type: 'HelloWorld_init_args', owner })(builder);
     const __data = builder.endCell();
     return { code: __code, data: __data };
 }
 
-const SampleTactContract_errors: { [key: number]: { message: string } } = {
+const HelloWorld_errors: { [key: number]: { message: string } } = {
     2: { message: `Stack underflow` },
     3: { message: `Stack overflow` },
     4: { message: `Integer overflow` },
@@ -455,52 +463,50 @@ const SampleTactContract_errors: { [key: number]: { message: string } } = {
     137: { message: `Masterchain support is not enabled for this contract` },
 }
 
-const SampleTactContract_types: ABIType[] = [
+const HelloWorld_types: ABIType[] = [
     {"name":"StateInit","header":null,"fields":[{"name":"code","type":{"kind":"simple","type":"cell","optional":false}},{"name":"data","type":{"kind":"simple","type":"cell","optional":false}}]},
     {"name":"Context","header":null,"fields":[{"name":"bounced","type":{"kind":"simple","type":"bool","optional":false}},{"name":"sender","type":{"kind":"simple","type":"address","optional":false}},{"name":"value","type":{"kind":"simple","type":"int","optional":false,"format":257}},{"name":"raw","type":{"kind":"simple","type":"slice","optional":false}}]},
     {"name":"SendParameters","header":null,"fields":[{"name":"bounce","type":{"kind":"simple","type":"bool","optional":false}},{"name":"to","type":{"kind":"simple","type":"address","optional":false}},{"name":"value","type":{"kind":"simple","type":"int","optional":false,"format":257}},{"name":"mode","type":{"kind":"simple","type":"int","optional":false,"format":257}},{"name":"body","type":{"kind":"simple","type":"cell","optional":true}},{"name":"code","type":{"kind":"simple","type":"cell","optional":true}},{"name":"data","type":{"kind":"simple","type":"cell","optional":true}}]},
     {"name":"Deploy","header":2490013878,"fields":[{"name":"queryId","type":{"kind":"simple","type":"uint","optional":false,"format":64}}]},
     {"name":"DeployOk","header":2952335191,"fields":[{"name":"queryId","type":{"kind":"simple","type":"uint","optional":false,"format":64}}]},
     {"name":"FactoryDeploy","header":1829761339,"fields":[{"name":"queryId","type":{"kind":"simple","type":"uint","optional":false,"format":64}},{"name":"cashback","type":{"kind":"simple","type":"address","optional":false}}]},
-    {"name":"SampleTactContract$Data","header":null,"fields":[{"name":"val","type":{"kind":"simple","type":"uint","optional":false,"format":32}}]},
+    {"name":"HelloWorld$Data","header":null,"fields":[{"name":"owner","type":{"kind":"simple","type":"address","optional":false}},{"name":"counter","type":{"kind":"simple","type":"uint","optional":false,"format":256}}]},
 ]
 
-const SampleTactContract_getters: ABIGetter[] = [
-    {"name":"value","arguments":[],"returnType":{"kind":"simple","type":"int","optional":false,"format":257}},
+const HelloWorld_getters: ABIGetter[] = [
+    {"name":"greeting","arguments":[],"returnType":{"kind":"simple","type":"string","optional":false}},
 ]
 
-export const SampleTactContract_getterMapping: { [key: string]: string } = {
-    'value': 'getValue',
+export const HelloWorld_getterMapping: { [key: string]: string } = {
+    'greeting': 'getGreeting',
 }
 
-const SampleTactContract_receivers: ABIReceiver[] = [
-    {"receiver":"internal","message":{"kind":"text","text":"increment"}},
-    {"receiver":"internal","message":{"kind":"typed","type":"Deploy"}},
+const HelloWorld_receivers: ABIReceiver[] = [
 ]
 
-export class SampleTactContract implements Contract {
+export class HelloWorld implements Contract {
     
-    static async init() {
-        return await SampleTactContract_init();
+    static async init(owner: Address) {
+        return await HelloWorld_init(owner);
     }
     
-    static async fromInit() {
-        const init = await SampleTactContract_init();
+    static async fromInit(owner: Address) {
+        const init = await HelloWorld_init(owner);
         const address = contractAddress(0, init);
-        return new SampleTactContract(address, init);
+        return new HelloWorld(address, init);
     }
     
     static fromAddress(address: Address) {
-        return new SampleTactContract(address);
+        return new HelloWorld(address);
     }
     
     readonly address: Address; 
     readonly init?: { code: Cell, data: Cell };
     readonly abi: ContractABI = {
-        types:  SampleTactContract_types,
-        getters: SampleTactContract_getters,
-        receivers: SampleTactContract_receivers,
-        errors: SampleTactContract_errors,
+        types:  HelloWorld_types,
+        getters: HelloWorld_getters,
+        receivers: HelloWorld_receivers,
+        errors: HelloWorld_errors,
     };
     
     private constructor(address: Address, init?: { code: Cell, data: Cell }) {
@@ -508,25 +514,10 @@ export class SampleTactContract implements Contract {
         this.init = init;
     }
     
-    async send(provider: ContractProvider, via: Sender, args: { value: bigint, bounce?: boolean| null | undefined }, message: 'increment' | Deploy) {
-        
-        let body: Cell | null = null;
-        if (message === 'increment') {
-            body = beginCell().storeUint(0, 32).storeStringTail(message).endCell();
-        }
-        if (message && typeof message === 'object' && !(message instanceof Slice) && message.$$type === 'Deploy') {
-            body = beginCell().store(storeDeploy(message)).endCell();
-        }
-        if (body === null) { throw new Error('Invalid message type'); }
-        
-        await provider.internal(via, { ...args, body: body });
-        
-    }
-    
-    async getValue(provider: ContractProvider) {
+    async getGreeting(provider: ContractProvider) {
         let builder = new TupleBuilder();
-        let source = (await provider.get('value', builder.build())).stack;
-        let result = source.readBigNumber();
+        let source = (await provider.get('greeting', builder.build())).stack;
+        let result = source.readString();
         return result;
     }
     

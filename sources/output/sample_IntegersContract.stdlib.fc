@@ -80,8 +80,8 @@ forall X0, X1 -> (X0, X1) __tact_tuple_destroy_2(tuple v) asm "2 UNTUPLE";
     send_raw_message($c, $params'mode);
 }
 
-((int), ()) $SampleTactContract$_fun_forward((int) $self, slice $to, cell $body, int $bounce, tuple $init) impure inline_ref {
-    var (($self'val)) = $self;
+((int, int, int, int, int, int, int, int, int, int, int, int, int, int), ()) $IntegersContract$_fun_forward((int, int, int, int, int, int, int, int, int, int, int, int, int, int) $self, slice $to, cell $body, int $bounce, tuple $init) impure inline_ref {
+    var (($self'i1, $self'i2, $self'i3, $self'i4, $self'i5, $self'i6, $self'i7, $self'i8, $self'i9, $self'i10, $self'i11, $self'i12, $self'i13, $self'i14)) = $self;
     var ($init) = $init;
     cell $code = null();
     cell $data = null();
@@ -97,15 +97,15 @@ forall X0, X1 -> (X0, X1) __tact_tuple_destroy_2(tuple v) asm "2 UNTUPLE";
         if (($balanceBeforeMessage < 0)) {
             raw_reserve(0, 0);
             $global_send($SendParameters$_constructor_bounce_to_value_mode_body_code_data($bounce, $to, 0, 130, $body, $code, $data));
-            return (($self'val), ());
+            return (($self'i1, $self'i2, $self'i3, $self'i4, $self'i5, $self'i6, $self'i7, $self'i8, $self'i9, $self'i10, $self'i11, $self'i12, $self'i13, $self'i14), ());
         }
     }
     $global_send($SendParameters$_constructor_bounce_to_value_mode_body_code_data($bounce, $to, 0, 66, $body, $code, $data));
-    return (($self'val), ());
+    return (($self'i1, $self'i2, $self'i3, $self'i4, $self'i5, $self'i6, $self'i7, $self'i8, $self'i9, $self'i10, $self'i11, $self'i12, $self'i13, $self'i14), ());
 }
 
-((int), ()) $SampleTactContract$_fun_notify((int) $self, cell $body) impure inline {
-    var (($self'val)) = $self;
-    ($self'val)~$SampleTactContract$_fun_forward(__tact_context_get_sender(), $body, false, null());
-    return (($self'val), ());
+((int, int, int, int, int, int, int, int, int, int, int, int, int, int), ()) $IntegersContract$_fun_notify((int, int, int, int, int, int, int, int, int, int, int, int, int, int) $self, cell $body) impure inline {
+    var (($self'i1, $self'i2, $self'i3, $self'i4, $self'i5, $self'i6, $self'i7, $self'i8, $self'i9, $self'i10, $self'i11, $self'i12, $self'i13, $self'i14)) = $self;
+    ($self'i1, $self'i2, $self'i3, $self'i4, $self'i5, $self'i6, $self'i7, $self'i8, $self'i9, $self'i10, $self'i11, $self'i12, $self'i13, $self'i14)~$IntegersContract$_fun_forward(__tact_context_get_sender(), $body, false, null());
+    return (($self'i1, $self'i2, $self'i3, $self'i4, $self'i5, $self'i6, $self'i7, $self'i8, $self'i9, $self'i10, $self'i11, $self'i12, $self'i13, $self'i14), ());
 }

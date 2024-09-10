@@ -1,5 +1,5 @@
 # TACT Compilation Report
-Contract: SampleTactContract
+Contract: SimpleCounterContract
 BOC Size: 518 bytes
 
 # Types
@@ -29,7 +29,7 @@ Signature: `DeployOk{queryId:uint64}`
 TLB: `factory_deploy#6d0ff13b queryId:uint64 cashback:address = FactoryDeploy`
 Signature: `FactoryDeploy{queryId:uint64,cashback:address}`
 
-## SampleTactContract$Data
+## SimpleCounterContract$Data
 TLB: `null`
 Signature: `null`
 
@@ -68,9 +68,9 @@ Total Get Methods: 1
 
 ```mermaid
 graph TD
-SampleTactContract
-SampleTactContract --> BaseTrait
-SampleTactContract --> Deployable
+SimpleCounterContract
+SimpleCounterContract --> BaseTrait
+SimpleCounterContract --> Deployable
 Deployable --> BaseTrait
 ```
 
@@ -78,5 +78,5 @@ Deployable --> BaseTrait
 
 ```mermaid
 graph TD
-SampleTactContract
+SimpleCounterContract
 ```

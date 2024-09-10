@@ -1,10 +1,10 @@
 {
-    "projects": [{
-        "name": "sample",
-        "path": "./sources/contract.tact",
-        "output": "./sources/output",
-        "options":{
-            
+    "projects": [
+        {
+            "name": "sample",
+            "path": "./sources/2_IntegersContract.tact",
+            "output": "./sources/output",
+            "options": {}
         }
-    }]
+    ]
 }

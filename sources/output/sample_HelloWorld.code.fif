@@ -1,0 +1,149 @@
+PROGRAM{
+  DECLPROC __tact_verify_address
+  DECLPROC __tact_load_address
+  DECLPROC __tact_store_address
+  DECLPROC $HelloWorld$_store
+  DECLPROC $HelloWorld$_load
+  DECLPROC $HelloWorld$init$_load
+  DECLPROC $HelloWorld$_contract_init
+  DECLPROC $HelloWorld$_contract_load
+  DECLPROC $HelloWorld$_contract_store
+  DECLPROC $HelloWorld$_fun_greeting
+  78250 DECLMETHOD %greeting
+  115390 DECLMETHOD lazy_deployment_completed
+  DECLPROC $HelloWorld$_contract_router_internal
+  DECLPROC recv_internal
+  DECLGLOBVAR __tact_context
+  DECLGLOBVAR __tact_context_sender
+  DECLGLOBVAR __tact_context_sys
+  DECLGLOBVAR __tact_randomized
+  __tact_verify_address PROCINLINE:<{
+    DUP
+    SBITS
+    267 PUSHINT
+    EQUAL
+    136 THROWIFNOT
+    DUP
+    11 PLDU
+    DUP
+    1279 PUSHINT
+    EQUAL
+    137 THROWIF
+    10 PUSHPOW2
+    EQUAL
+    136 THROWIFNOT
+  }>
+  __tact_load_address PROCINLINE:<{
+    LDMSGADDR
+    SWAP
+    __tact_verify_address INLINECALLDICT
+  }>
+  __tact_store_address PROCINLINE:<{
+    __tact_verify_address INLINECALLDICT
+    STSLICER
+  }>
+  $HelloWorld$_store PROCINLINE:<{
+    -ROT
+    __tact_store_address INLINECALLDICT
+    256 STU
+  }>
+  $HelloWorld$_load PROCINLINE:<{
+    __tact_load_address INLINECALLDICT
+    SWAP
+    256 LDU
+    -ROT
+  }>
+  $HelloWorld$init$_load PROCINLINE:<{
+    __tact_load_address INLINECALLDICT
+  }>
+  $HelloWorld$_contract_init PROCREF:<{
+    0 PUSHINT
+  }>
+  $HelloWorld$_contract_load PROCREF:<{
+    c4 PUSH
+    CTOS
+    LDREF
+    SWAP
+    __tact_context_sys SETGLOB
+    1 LDI
+    SWAP
+    IFJMP:<{
+      $HelloWorld$_load INLINECALLDICT
+      1 2 BLKDROP2
+    }>
+    MYADDR
+    11 PLDU
+    10 PUSHPOW2
+    EQUAL
+    137 THROWIFNOT
+    $HelloWorld$init$_load INLINECALLDICT
+    SWAP
+    ENDS
+    $HelloWorld$_contract_init INLINECALLDICT
+  }>
+  $HelloWorld$_contract_store PROCINLINE:<{
+    NEWC
+    __tact_context_sys GETGLOB
+    SWAP
+    STREF
+    TRUE
+    SWAP
+    1 STI
+    -ROT
+    $HelloWorld$_store INLINECALLDICT
+    ENDC
+    c4 POP
+  }>
+  $HelloWorld$_fun_greeting PROCREF:<{
+    B{b5ee9c7241010101000f00001a48656c6c6f2c20576f726c6421636e77e2} B>boc <s PUSHSLICE
+  }>
+  %greeting PROC:<{
+    $HelloWorld$_contract_load INLINECALLDICT
+    $HelloWorld$_fun_greeting INLINECALLDICT
+    2 1 BLKDROP2
+  }>
+  lazy_deployment_completed PROC:<{
+    c4 PUSH
+    CTOS
+    1 LDI
+    SWAP
+  }>
+  $HelloWorld$_contract_router_internal PROCREF:<{
+    SWAP
+    IFJMP:<{
+      DROP
+      TRUE
+    }>
+    DUP
+    SBITS
+    NIP
+    31 GTINT
+    IF:<{
+    }>
+    FALSE
+  }>
+  recv_internal PROC:<{
+    SWAP
+    CTOS
+    4 LDU
+    SWAP
+    1 PUSHINT
+    AND
+    NEGATE
+    SWAP
+    LDMSGADDR
+    SWAP
+    __tact_verify_address INLINECALLDICT
+    s0 s4 s2 PUXCPU
+    s0 s3 XCHG
+    4 TUPLE
+    __tact_context SETGLOB
+    s0 s2 XCHG
+    __tact_context_sender SETGLOB
+    $HelloWorld$_contract_load INLINECALLDICT
+    2SWAP
+    $HelloWorld$_contract_router_internal INLINECALLDICT
+    130 THROWIFNOT
+    $HelloWorld$_contract_store INLINECALLDICT
+  }>
+}END>c

@@ -362,73 +362,154 @@ function dictValueParserFactoryDeploy(): DictionaryValue<FactoryDeploy> {
     }
 }
 
-export type SampleTactContract$Data = {
-    $$type: 'SampleTactContract$Data';
-    val: bigint;
+export type IntegersContract$Data = {
+    $$type: 'IntegersContract$Data';
+    i1: bigint;
+    i2: bigint;
+    i3: bigint;
+    i4: bigint;
+    i5: bigint;
+    i6: bigint;
+    i7: bigint;
+    i8: bigint;
+    i9: bigint;
+    i10: bigint;
+    i11: bigint;
+    i12: bigint;
+    i13: bigint;
+    i14: bigint;
 }
 
-export function storeSampleTactContract$Data(src: SampleTactContract$Data) {
+export function storeIntegersContract$Data(src: IntegersContract$Data) {
     return (builder: Builder) => {
         let b_0 = builder;
-        b_0.storeUint(src.val, 32);
+        b_0.storeInt(src.i1, 257);
+        b_0.storeUint(src.i2, 256);
+        b_0.storeInt(src.i3, 256);
+        b_0.storeUint(src.i4, 128);
+        let b_1 = new Builder();
+        b_1.storeInt(src.i5, 128);
+        b_1.storeCoins(src.i6);
+        b_1.storeUint(src.i7, 64);
+        b_1.storeInt(src.i8, 64);
+        b_1.storeUint(src.i9, 32);
+        b_1.storeInt(src.i10, 32);
+        b_1.storeUint(src.i11, 16);
+        b_1.storeInt(src.i12, 16);
+        b_1.storeUint(src.i13, 8);
+        b_1.storeInt(src.i14, 8);
+        b_0.storeRef(b_1.endCell());
     };
 }
 
-export function loadSampleTactContract$Data(slice: Slice) {
+export function loadIntegersContract$Data(slice: Slice) {
     let sc_0 = slice;
-    let _val = sc_0.loadUintBig(32);
-    return { $$type: 'SampleTactContract$Data' as const, val: _val };
+    let _i1 = sc_0.loadIntBig(257);
+    let _i2 = sc_0.loadUintBig(256);
+    let _i3 = sc_0.loadIntBig(256);
+    let _i4 = sc_0.loadUintBig(128);
+    let sc_1 = sc_0.loadRef().beginParse();
+    let _i5 = sc_1.loadIntBig(128);
+    let _i6 = sc_1.loadCoins();
+    let _i7 = sc_1.loadUintBig(64);
+    let _i8 = sc_1.loadIntBig(64);
+    let _i9 = sc_1.loadUintBig(32);
+    let _i10 = sc_1.loadIntBig(32);
+    let _i11 = sc_1.loadUintBig(16);
+    let _i12 = sc_1.loadIntBig(16);
+    let _i13 = sc_1.loadUintBig(8);
+    let _i14 = sc_1.loadIntBig(8);
+    return { $$type: 'IntegersContract$Data' as const, i1: _i1, i2: _i2, i3: _i3, i4: _i4, i5: _i5, i6: _i6, i7: _i7, i8: _i8, i9: _i9, i10: _i10, i11: _i11, i12: _i12, i13: _i13, i14: _i14 };
 }
 
-function loadTupleSampleTactContract$Data(source: TupleReader) {
-    let _val = source.readBigNumber();
-    return { $$type: 'SampleTactContract$Data' as const, val: _val };
+function loadTupleIntegersContract$Data(source: TupleReader) {
+    let _i1 = source.readBigNumber();
+    let _i2 = source.readBigNumber();
+    let _i3 = source.readBigNumber();
+    let _i4 = source.readBigNumber();
+    let _i5 = source.readBigNumber();
+    let _i6 = source.readBigNumber();
+    let _i7 = source.readBigNumber();
+    let _i8 = source.readBigNumber();
+    let _i9 = source.readBigNumber();
+    let _i10 = source.readBigNumber();
+    let _i11 = source.readBigNumber();
+    let _i12 = source.readBigNumber();
+    let _i13 = source.readBigNumber();
+    let _i14 = source.readBigNumber();
+    return { $$type: 'IntegersContract$Data' as const, i1: _i1, i2: _i2, i3: _i3, i4: _i4, i5: _i5, i6: _i6, i7: _i7, i8: _i8, i9: _i9, i10: _i10, i11: _i11, i12: _i12, i13: _i13, i14: _i14 };
 }
 
-function loadGetterTupleSampleTactContract$Data(source: TupleReader) {
-    let _val = source.readBigNumber();
-    return { $$type: 'SampleTactContract$Data' as const, val: _val };
+function loadGetterTupleIntegersContract$Data(source: TupleReader) {
+    let _i1 = source.readBigNumber();
+    let _i2 = source.readBigNumber();
+    let _i3 = source.readBigNumber();
+    let _i4 = source.readBigNumber();
+    let _i5 = source.readBigNumber();
+    let _i6 = source.readBigNumber();
+    let _i7 = source.readBigNumber();
+    let _i8 = source.readBigNumber();
+    let _i9 = source.readBigNumber();
+    let _i10 = source.readBigNumber();
+    let _i11 = source.readBigNumber();
+    let _i12 = source.readBigNumber();
+    let _i13 = source.readBigNumber();
+    let _i14 = source.readBigNumber();
+    return { $$type: 'IntegersContract$Data' as const, i1: _i1, i2: _i2, i3: _i3, i4: _i4, i5: _i5, i6: _i6, i7: _i7, i8: _i8, i9: _i9, i10: _i10, i11: _i11, i12: _i12, i13: _i13, i14: _i14 };
 }
 
-function storeTupleSampleTactContract$Data(source: SampleTactContract$Data) {
+function storeTupleIntegersContract$Data(source: IntegersContract$Data) {
     let builder = new TupleBuilder();
-    builder.writeNumber(source.val);
+    builder.writeNumber(source.i1);
+    builder.writeNumber(source.i2);
+    builder.writeNumber(source.i3);
+    builder.writeNumber(source.i4);
+    builder.writeNumber(source.i5);
+    builder.writeNumber(source.i6);
+    builder.writeNumber(source.i7);
+    builder.writeNumber(source.i8);
+    builder.writeNumber(source.i9);
+    builder.writeNumber(source.i10);
+    builder.writeNumber(source.i11);
+    builder.writeNumber(source.i12);
+    builder.writeNumber(source.i13);
+    builder.writeNumber(source.i14);
     return builder.build();
 }
 
-function dictValueParserSampleTactContract$Data(): DictionaryValue<SampleTactContract$Data> {
+function dictValueParserIntegersContract$Data(): DictionaryValue<IntegersContract$Data> {
     return {
         serialize: (src, builder) => {
-            builder.storeRef(beginCell().store(storeSampleTactContract$Data(src)).endCell());
+            builder.storeRef(beginCell().store(storeIntegersContract$Data(src)).endCell());
         },
         parse: (src) => {
-            return loadSampleTactContract$Data(src.loadRef().beginParse());
+            return loadIntegersContract$Data(src.loadRef().beginParse());
         }
     }
 }
 
- type SampleTactContract_init_args = {
-    $$type: 'SampleTactContract_init_args';
+ type IntegersContract_init_args = {
+    $$type: 'IntegersContract_init_args';
 }
 
-function initSampleTactContract_init_args(src: SampleTactContract_init_args) {
+function initIntegersContract_init_args(src: IntegersContract_init_args) {
     return (builder: Builder) => {
         let b_0 = builder;
     };
 }
 
-async function SampleTactContract_init() {
-    const __code = Cell.fromBase64('te6ccgECDQEAAfoAART/APSkE/S88sgLAQIBYgIDApjQAdDTAwFxsKMB+kABINdJgQELuvLgiCDXCwoggQT/uvLQiYMJuvLgiFRQUwNvBPhhAvhi2zxZ2zzy4ILI+EMBzH8BygABAcsfye1UCgQCAnYICQL27aLt+wGSMH/gcCHXScIflTAg1wsf3iCCEJRqmLa6jqgw0x8BghCUapi2uvLggdM/ATHIAYIQr/kPV1jLH8s/yfhCAXBt2zx/4MAAjiv5AYLwxPjXIxLt/e9be+x4M727Fi0VEb14qRKu0PJjevZVcq66lKR/2zHgkTDiBQwBOm1tIm6zmVsgbvLQgG8iAZEy4hAkcAMEgEJQI9s8BgHKyHEBygFQBwHKAHABygJQBSDXSYEBC7ry4Igg1wsKIIEE/7ry0ImDCbry4IjPFlAD+gJwAcpoI26zkX+TJG6z4pczMwFwAcoA4w0hbrOcfwHKAAEgbvLQgAHMlTFwAcoA4skB+wAHAJh/AcoAyHABygBwAcoAJG6znX8BygAEIG7y0IBQBMyWNANwAcoA4iRus51/AcoABCBu8tCAUATMljQDcAHKAOJwAcoAAn8BygACyVjMABGwr7tRNDSAAGACD7KwNs82zwxgCgsBPO1E0NQB+GPSAAGU0x8BMeAw+CjXCwqDCbry4InbPAwAAiAAAnA=');
-    const __system = Cell.fromBase64('te6cckECDwEAAgQAAQHAAQEFoebTAgEU/wD0pBP0vPLICwMCAWIECQKY0AHQ0wMBcbCjAfpAASDXSYEBC7ry4Igg1wsKIIEE/7ry0ImDCbry4IhUUFMDbwT4YQL4Yts8Wds88uCCyPhDAcx/AcoAAQHLH8ntVAwFAvbtou37AZIwf+BwIddJwh+VMCDXCx/eIIIQlGqYtrqOqDDTHwGCEJRqmLa68uCB0z8BMcgBghCv+Q9XWMsfyz/J+EIBcG3bPH/gwACOK/kBgvDE+NcjEu3971t77HgzvbsWLRURvXipEq7Q8mN69lVyrrqUpH/bMeCRMOIGDQE6bW0ibrOZWyBu8tCAbyIBkTLiECRwAwSAQlAj2zwHAcrIcQHKAVAHAcoAcAHKAlAFINdJgQELuvLgiCDXCwoggQT/uvLQiYMJuvLgiM8WUAP6AnABymgjbrORf5MkbrPilzMzAXABygDjDSFus5x/AcoAASBu8tCAAcyVMXABygDiyQH7AAgAmH8BygDIcAHKAHABygAkbrOdfwHKAAQgbvLQgFAEzJY0A3ABygDiJG6znX8BygAEIG7y0IBQBMyWNANwAcoA4nABygACfwHKAALJWMwCAnYKCwARsK+7UTQ0gABgAg+ysDbPNs8MYAwOATztRNDUAfhj0gABlNMfATHgMPgo1wsKgwm68uCJ2zwNAAJwAAIgpaECXA==');
+async function IntegersContract_init() {
+    const __code = Cell.fromBase64('te6ccgECDQEAAqQAART/APSkE/S88sgLAQIBYgIDAvjQAdDTAwFxsKMB+kABINdJgQELuvLgiCDXCwoggQT/uvLQiYMJuvLgiFRQUwNvBPhhAvhi2zxVHds88uCCyPhDAcx/AcoAVdBQ3oEBAc8AG8v/Gcr/F8t/BcjKf1AE+gISyz/KP8sfEsofEssPEsoPEssHEsoHyQHMye1UCgQCASAICQH27aLt+wGSMH/gcCHXScIflTAg1wsf3iCCEJRqmLa6jqgw0x8BghCUapi2uvLggdM/ATHIAYIQr/kPV1jLH8s/yfhCAXBt2zx/4MAAjir5AYLwxPjXIxLt/e9be+x4M727Fi0VEb14qRKu0PJjevZVcq66k3/bMeCRMOJwBQE6bW0ibrOZWyBu8tCAbyIBkTLiECRwAwSAQlAj2zwGAcrIcQHKAVAHAcoAcAHKAlAFINdJgQELuvLgiCDXCwoggQT/uvLQiYMJuvLgiM8WUAP6AnABymgjbrORf5MkbrPilzMzAXABygDjDSFus5x/AcoAASBu8tCAAcyVMXABygDiyQH7AAcAmH8BygDIcAHKAHABygAkbrOdfwHKAAQgbvLQgFAEzJY0A3ABygDiJG6znX8BygAEIG7y0IBQBMyWNANwAcoA4nABygACfwHKAALJWMwCEb9yltnm2eNnDAoLABG+FfdqJoaQAAwBkO1E0NQB+GPSAAGOLYEBAdcA0//S/9N/1AHQ0n/6ANM/0j/TH9If0w/SD9MH0gcwEK4QrRCsEKtsHuAw+CjXCwqDCbry4InbPAwAAi0AooELuYARgRxKgf81cFRwAFMAgvCD39VS5jcptHL8vMjEXrzGaRcCVYto7HUn4bpAOg8xqAkIgjhRv67mTGRM5feCEDuaygBQmIIQSVBPgAhVMw==');
+    const __system = Cell.fromBase64('te6cckECDwEAAq4AAQHAAQEFoXpjAgEU/wD0pBP0vPLICwMCAWIECQL40AHQ0wMBcbCjAfpAASDXSYEBC7ry4Igg1wsKIIEE/7ry0ImDCbry4IhUUFMDbwT4YQL4Yts8VR3bPPLggsj4QwHMfwHKAFXQUN6BAQHPABvL/xnK/xfLfwXIyn9QBPoCEss/yj/LHxLKHxLLDxLKDxLLBxLKB8kBzMntVAsFAfbtou37AZIwf+BwIddJwh+VMCDXCx/eIIIQlGqYtrqOqDDTHwGCEJRqmLa68uCB0z8BMcgBghCv+Q9XWMsfyz/J+EIBcG3bPH/gwACOKvkBgvDE+NcjEu3971t77HgzvbsWLRURvXipEq7Q8mN69lVyrrqTf9sx4JEw4nAGATptbSJus5lbIG7y0IBvIgGRMuIQJHADBIBCUCPbPAcByshxAcoBUAcBygBwAcoCUAUg10mBAQu68uCIINcLCiCBBP+68tCJgwm68uCIzxZQA/oCcAHKaCNus5F/kyRus+KXMzMBcAHKAOMNIW6znH8BygABIG7y0IABzJUxcAHKAOLJAfsACACYfwHKAMhwAcoAcAHKACRus51/AcoABCBu8tCAUATMljQDcAHKAOIkbrOdfwHKAAQgbvLQgFAEzJY0A3ABygDicAHKAAJ/AcoAAslYzAIBIAoOAhG/cpbZ5tnjZwwLDQGQ7UTQ1AH4Y9IAAY4tgQEB1wDT/9L/03/UAdDSf/oA0z/SP9Mf0h/TD9IP0wfSBzAQrhCtEKwQq2we4DD4KNcLCoMJuvLgids8DACigQu5gBGBHEqB/zVwVHAAUwCC8IPf1VLmNym0cvy8yMRevMZpFwJVi2jsdSfhukA6DzGoCQiCOFG/ruZMZEzl94IQO5rKAFCYghBJUE+ACFUzAAItABG+FfdqJoaQAAwqpdYw');
     let builder = beginCell();
     builder.storeRef(__system);
     builder.storeUint(0, 1);
-    initSampleTactContract_init_args({ $$type: 'SampleTactContract_init_args' })(builder);
+    initIntegersContract_init_args({ $$type: 'IntegersContract_init_args' })(builder);
     const __data = builder.endCell();
     return { code: __code, data: __data };
 }
 
-const SampleTactContract_errors: { [key: number]: { message: string } } = {
+const IntegersContract_errors: { [key: number]: { message: string } } = {
     2: { message: `Stack underflow` },
     3: { message: `Stack overflow` },
     4: { message: `Integer overflow` },
@@ -455,52 +536,52 @@ const SampleTactContract_errors: { [key: number]: { message: string } } = {
     137: { message: `Masterchain support is not enabled for this contract` },
 }
 
-const SampleTactContract_types: ABIType[] = [
+const IntegersContract_types: ABIType[] = [
     {"name":"StateInit","header":null,"fields":[{"name":"code","type":{"kind":"simple","type":"cell","optional":false}},{"name":"data","type":{"kind":"simple","type":"cell","optional":false}}]},
     {"name":"Context","header":null,"fields":[{"name":"bounced","type":{"kind":"simple","type":"bool","optional":false}},{"name":"sender","type":{"kind":"simple","type":"address","optional":false}},{"name":"value","type":{"kind":"simple","type":"int","optional":false,"format":257}},{"name":"raw","type":{"kind":"simple","type":"slice","optional":false}}]},
     {"name":"SendParameters","header":null,"fields":[{"name":"bounce","type":{"kind":"simple","type":"bool","optional":false}},{"name":"to","type":{"kind":"simple","type":"address","optional":false}},{"name":"value","type":{"kind":"simple","type":"int","optional":false,"format":257}},{"name":"mode","type":{"kind":"simple","type":"int","optional":false,"format":257}},{"name":"body","type":{"kind":"simple","type":"cell","optional":true}},{"name":"code","type":{"kind":"simple","type":"cell","optional":true}},{"name":"data","type":{"kind":"simple","type":"cell","optional":true}}]},
     {"name":"Deploy","header":2490013878,"fields":[{"name":"queryId","type":{"kind":"simple","type":"uint","optional":false,"format":64}}]},
     {"name":"DeployOk","header":2952335191,"fields":[{"name":"queryId","type":{"kind":"simple","type":"uint","optional":false,"format":64}}]},
     {"name":"FactoryDeploy","header":1829761339,"fields":[{"name":"queryId","type":{"kind":"simple","type":"uint","optional":false,"format":64}},{"name":"cashback","type":{"kind":"simple","type":"address","optional":false}}]},
-    {"name":"SampleTactContract$Data","header":null,"fields":[{"name":"val","type":{"kind":"simple","type":"uint","optional":false,"format":32}}]},
+    {"name":"IntegersContract$Data","header":null,"fields":[{"name":"i1","type":{"kind":"simple","type":"int","optional":false,"format":257}},{"name":"i2","type":{"kind":"simple","type":"uint","optional":false,"format":256}},{"name":"i3","type":{"kind":"simple","type":"int","optional":false,"format":256}},{"name":"i4","type":{"kind":"simple","type":"uint","optional":false,"format":128}},{"name":"i5","type":{"kind":"simple","type":"int","optional":false,"format":128}},{"name":"i6","type":{"kind":"simple","type":"uint","optional":false,"format":"coins"}},{"name":"i7","type":{"kind":"simple","type":"uint","optional":false,"format":64}},{"name":"i8","type":{"kind":"simple","type":"int","optional":false,"format":64}},{"name":"i9","type":{"kind":"simple","type":"uint","optional":false,"format":32}},{"name":"i10","type":{"kind":"simple","type":"int","optional":false,"format":32}},{"name":"i11","type":{"kind":"simple","type":"uint","optional":false,"format":16}},{"name":"i12","type":{"kind":"simple","type":"int","optional":false,"format":16}},{"name":"i13","type":{"kind":"simple","type":"uint","optional":false,"format":8}},{"name":"i14","type":{"kind":"simple","type":"int","optional":false,"format":8}}]},
 ]
 
-const SampleTactContract_getters: ABIGetter[] = [
-    {"name":"value","arguments":[],"returnType":{"kind":"simple","type":"int","optional":false,"format":257}},
+const IntegersContract_getters: ABIGetter[] = [
+    {"name":"result","arguments":[],"returnType":{"kind":"simple","type":"int","optional":false,"format":257}},
 ]
 
-export const SampleTactContract_getterMapping: { [key: string]: string } = {
-    'value': 'getValue',
+export const IntegersContract_getterMapping: { [key: string]: string } = {
+    'result': 'getResult',
 }
 
-const SampleTactContract_receivers: ABIReceiver[] = [
+const IntegersContract_receivers: ABIReceiver[] = [
     {"receiver":"internal","message":{"kind":"text","text":"increment"}},
     {"receiver":"internal","message":{"kind":"typed","type":"Deploy"}},
 ]
 
-export class SampleTactContract implements Contract {
+export class IntegersContract implements Contract {
     
     static async init() {
-        return await SampleTactContract_init();
+        return await IntegersContract_init();
     }
     
     static async fromInit() {
-        const init = await SampleTactContract_init();
+        const init = await IntegersContract_init();
         const address = contractAddress(0, init);
-        return new SampleTactContract(address, init);
+        return new IntegersContract(address, init);
     }
     
     static fromAddress(address: Address) {
-        return new SampleTactContract(address);
+        return new IntegersContract(address);
     }
     
     readonly address: Address; 
     readonly init?: { code: Cell, data: Cell };
     readonly abi: ContractABI = {
-        types:  SampleTactContract_types,
-        getters: SampleTactContract_getters,
-        receivers: SampleTactContract_receivers,
-        errors: SampleTactContract_errors,
+        types:  IntegersContract_types,
+        getters: IntegersContract_getters,
+        receivers: IntegersContract_receivers,
+        errors: IntegersContract_errors,
     };
     
     private constructor(address: Address, init?: { code: Cell, data: Cell }) {
@@ -523,9 +604,9 @@ export class SampleTactContract implements Contract {
         
     }
     
-    async getValue(provider: ContractProvider) {
+    async getResult(provider: ContractProvider) {
         let builder = new TupleBuilder();
-        let source = (await provider.get('value', builder.build())).stack;
+        let source = (await provider.get('result', builder.build())).stack;
         let result = source.readBigNumber();
         return result;
     }

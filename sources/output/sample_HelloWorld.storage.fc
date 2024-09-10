@@ -1,0 +1,44 @@
+;;
+;; Type: HelloWorld
+;;
+
+builder $HelloWorld$_store(builder build_0, (slice, int) v) inline {
+    var (v'owner, v'counter) = v;
+    build_0 = __tact_store_address(build_0, v'owner);
+    build_0 = build_0.store_uint(v'counter, 256);
+    return build_0;
+}
+
+(slice, ((slice, int))) $HelloWorld$_load(slice sc_0) inline {
+    var v'owner = sc_0~__tact_load_address();
+    var v'counter = sc_0~load_uint(256);
+    return (sc_0, (v'owner, v'counter));
+}
+
+(slice, ((slice))) $HelloWorld$init$_load(slice sc_0) inline {
+    var v'owner = sc_0~__tact_load_address();
+    return (sc_0, (v'owner));
+}
+
+(slice, int) $HelloWorld$_contract_load() impure inline_ref {
+    slice $sc = get_data().begin_parse();
+    __tact_context_sys = $sc~load_ref();
+    int $loaded = $sc~load_int(1);
+    if ($loaded) {
+        return $sc~$HelloWorld$_load();
+    } else {
+        ;; Allow only workchain deployments
+        throw_unless(137, my_address().preload_uint(11) == 1024);
+        (slice $owner) = $sc~$HelloWorld$init$_load();
+        $sc.end_parse();
+        return $HelloWorld$_contract_init($owner);
+    }
+}
+
+() $HelloWorld$_contract_store((slice, int) v) impure inline {
+    builder b = begin_cell();
+    b = b.store_ref(__tact_context_sys);
+    b = b.store_int(true, 1);
+    b = $HelloWorld$_store(b, v);
+    set_data(b.end_cell());
+}

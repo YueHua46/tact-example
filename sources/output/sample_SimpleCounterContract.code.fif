@@ -9,23 +9,23 @@ PROGRAM{
   DECLPROC $Deploy$_load
   DECLPROC $DeployOk$_store
   DECLPROC $DeployOk$_store_cell
-  DECLPROC $SampleTactContract$_store
-  DECLPROC $SampleTactContract$_load
+  DECLPROC $SimpleCounterContract$_store
+  DECLPROC $SimpleCounterContract$_load
   DECLPROC $StateInit$_not_null
-  DECLPROC $SampleTactContract$_contract_init
-  DECLPROC $SampleTactContract$_contract_load
-  DECLPROC $SampleTactContract$_contract_store
+  DECLPROC $SimpleCounterContract$_contract_init
+  DECLPROC $SimpleCounterContract$_contract_load
+  DECLPROC $SimpleCounterContract$_contract_store
   DECLPROC $global_send
-  DECLPROC $SampleTactContract$_fun_value
+  DECLPROC $SimpleCounterContract$_fun_value
   DECLPROC $SendParameters$_constructor_bounce_to_value_mode_body_code_data
-  DECLPROC $SampleTactContract$_fun_forward
-  DECLPROC $SampleTactContract$_fun_notify
+  DECLPROC $SimpleCounterContract$_fun_forward
+  DECLPROC $SimpleCounterContract$_fun_notify
   DECLPROC $DeployOk$_constructor_queryId
-  DECLPROC $SampleTactContract$_internal_text_c4f8d72312edfdef5b7bec7833bdbb162d1511bd78a912aed0f2637af65572ae
-  DECLPROC $SampleTactContract$_internal_binary_Deploy
+  DECLPROC $SimpleCounterContract$_internal_text_c4f8d72312edfdef5b7bec7833bdbb162d1511bd78a912aed0f2637af65572ae
+  DECLPROC $SimpleCounterContract$_internal_binary_Deploy
   121536 DECLMETHOD %value
   115390 DECLMETHOD lazy_deployment_completed
-  DECLPROC $SampleTactContract$_contract_router_internal
+  DECLPROC $SimpleCounterContract$_contract_router_internal
   DECLPROC recv_internal
   DECLGLOBVAR __tact_context
   DECLGLOBVAR __tact_context_sender
@@ -92,11 +92,11 @@ PROGRAM{
     $DeployOk$_store INLINECALLDICT
     ENDC
   }>
-  $SampleTactContract$_store PROCINLINE:<{
+  $SimpleCounterContract$_store PROCINLINE:<{
     SWAP
     32 STU
   }>
-  $SampleTactContract$_load PROCINLINE:<{
+  $SimpleCounterContract$_load PROCINLINE:<{
     32 LDU
     SWAP
   }>
@@ -106,10 +106,10 @@ PROGRAM{
     128 THROWIF
     2 UNTUPLE
   }>
-  $SampleTactContract$_contract_init PROCREF:<{
+  $SimpleCounterContract$_contract_init PROCREF:<{
     0 PUSHINT
   }>
-  $SampleTactContract$_contract_load PROCREF:<{
+  $SimpleCounterContract$_contract_load PROCREF:<{
     c4 PUSH
     CTOS
     LDREF
@@ -118,7 +118,7 @@ PROGRAM{
     1 LDI
     SWAP
     IFJMP:<{
-      $SampleTactContract$_load INLINECALLDICT
+      $SimpleCounterContract$_load INLINECALLDICT
       NIP
     }>
     DROP
@@ -127,9 +127,9 @@ PROGRAM{
     10 PUSHPOW2
     EQUAL
     137 THROWIFNOT
-    $SampleTactContract$_contract_init INLINECALLDICT
+    $SimpleCounterContract$_contract_init INLINECALLDICT
   }>
-  $SampleTactContract$_contract_store PROCINLINE:<{
+  $SimpleCounterContract$_contract_store PROCINLINE:<{
     NEWC
     __tact_context_sys GETGLOB
     SWAP
@@ -138,7 +138,7 @@ PROGRAM{
     SWAP
     1 STI
     SWAP
-    $SampleTactContract$_store INLINECALLDICT
+    $SimpleCounterContract$_store INLINECALLDICT
     ENDC
     c4 POP
   }>
@@ -244,12 +244,12 @@ PROGRAM{
     SWAP
     SENDRAWMSG
   }>
-  $SampleTactContract$_fun_value PROCREF:<{
+  $SimpleCounterContract$_fun_value PROCREF:<{
     DUP
   }>
   $SendParameters$_constructor_bounce_to_value_mode_body_code_data PROCINLINE:<{
   }>
-  $SampleTactContract$_fun_forward PROCREF:<{
+  $SimpleCounterContract$_fun_forward PROCREF:<{
     PUSHNULL
     PUSHNULL
     s2 PUSH
@@ -271,26 +271,26 @@ PROGRAM{
     $SendParameters$_constructor_bounce_to_value_mode_body_code_data INLINECALLDICT
     $global_send INLINECALLDICT
   }>
-  $SampleTactContract$_fun_notify PROCINLINE:<{
+  $SimpleCounterContract$_fun_notify PROCINLINE:<{
     __tact_context_get_sender INLINECALLDICT
     SWAP
     FALSE
     PUSHNULL
-    $SampleTactContract$_fun_forward INLINECALLDICT
+    $SimpleCounterContract$_fun_forward INLINECALLDICT
   }>
   $DeployOk$_constructor_queryId PROCINLINE:<{
   }>
-  $SampleTactContract$_internal_text_c4f8d72312edfdef5b7bec7833bdbb162d1511bd78a912aed0f2637af65572ae PROCINLINE:<{
+  $SimpleCounterContract$_internal_text_c4f8d72312edfdef5b7bec7833bdbb162d1511bd78a912aed0f2637af65572ae PROCINLINE:<{
     INC
   }>
-  $SampleTactContract$_internal_binary_Deploy PROCINLINE:<{
+  $SimpleCounterContract$_internal_binary_Deploy PROCINLINE:<{
     $DeployOk$_constructor_queryId INLINECALLDICT
     $DeployOk$_store_cell INLINECALLDICT
-    $SampleTactContract$_fun_notify INLINECALLDICT
+    $SimpleCounterContract$_fun_notify INLINECALLDICT
   }>
   %value PROC:<{
-    $SampleTactContract$_contract_load INLINECALLDICT
-    $SampleTactContract$_fun_value INLINECALLDICT
+    $SimpleCounterContract$_contract_load INLINECALLDICT
+    $SimpleCounterContract$_fun_value INLINECALLDICT
     NIP
   }>
   lazy_deployment_completed PROC:<{
@@ -299,7 +299,7 @@ PROGRAM{
     1 LDI
     SWAP
   }>
-  $SampleTactContract$_contract_router_internal PROCREF:<{
+  $SimpleCounterContract$_contract_router_internal PROCREF:<{
     c2 SAVE
     SAMEALTSAVE
     SWAP
@@ -323,7 +323,7 @@ PROGRAM{
       DROP
       $Deploy$_load INLINECALLDICT
       NIP
-      $SampleTactContract$_internal_binary_Deploy INLINECALLDICT
+      $SimpleCounterContract$_internal_binary_Deploy INLINECALLDICT
       TRUE
     }>
     0 EQINT
@@ -332,7 +332,7 @@ PROGRAM{
       89092981215441470209245890604563109773385607357076622359718516871332286001838 PUSHINT
       EQUAL
       IFJMP:<{
-        $SampleTactContract$_internal_text_c4f8d72312edfdef5b7bec7833bdbb162d1511bd78a912aed0f2637af65572ae INLINECALLDICT
+        $SimpleCounterContract$_internal_text_c4f8d72312edfdef5b7bec7833bdbb162d1511bd78a912aed0f2637af65572ae INLINECALLDICT
         TRUE
         RETALT
       }>
@@ -359,10 +359,10 @@ PROGRAM{
     __tact_context SETGLOB
     s0 s2 XCHG
     __tact_context_sender SETGLOB
-    $SampleTactContract$_contract_load INLINECALLDICT
+    $SimpleCounterContract$_contract_load INLINECALLDICT
     -ROT
-    $SampleTactContract$_contract_router_internal INLINECALLDICT
+    $SimpleCounterContract$_contract_router_internal INLINECALLDICT
     130 THROWIFNOT
-    $SampleTactContract$_contract_store INLINECALLDICT
+    $SimpleCounterContract$_contract_store INLINECALLDICT
   }>
 }END>c

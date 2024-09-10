@@ -1,6 +1,6 @@
 # TACT Compilation Report
-Contract: SampleTactContract
-BOC Size: 518 bytes
+Contract: HelloWorld
+BOC Size: 303 bytes
 
 # Types
 Total Types: 7
@@ -29,14 +29,14 @@ Signature: `DeployOk{queryId:uint64}`
 TLB: `factory_deploy#6d0ff13b queryId:uint64 cashback:address = FactoryDeploy`
 Signature: `FactoryDeploy{queryId:uint64,cashback:address}`
 
-## SampleTactContract$Data
+## HelloWorld$Data
 TLB: `null`
 Signature: `null`
 
 # Get Methods
 Total Get Methods: 1
 
-## value
+## greeting
 
 # Error Codes
 2: Stack underflow
@@ -68,15 +68,13 @@ Total Get Methods: 1
 
 ```mermaid
 graph TD
-SampleTactContract
-SampleTactContract --> BaseTrait
-SampleTactContract --> Deployable
-Deployable --> BaseTrait
+HelloWorld
+HelloWorld --> BaseTrait
 ```
 
 # Contract Dependency Diagram
 
 ```mermaid
 graph TD
-SampleTactContract
+HelloWorld
 ```
